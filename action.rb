@@ -18,7 +18,8 @@ LOGINNAME = ENV["loginname"]
 PASSWORD = ENV["password"]
 
 def search_type
-  abbr, keyword = ARGV
+  abbr, *query = ARGV
+  keyword = query.join(" ")
   case abbr
   when AllType::ABBREVIATION then
     AllType.new(keyword)
